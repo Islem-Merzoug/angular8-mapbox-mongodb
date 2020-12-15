@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2 center">
+        <h2>Save Place</h2>
+        <form [formGroup]="savePlaceForm" (ngSubmit)="onSavePlace()">
+
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name"
+                        class="form-control" formControlName="name">
+            </div>
+
+            <!-- <div class="form-group">
+                <label for="localisation">Localisation</label>
+                <textarea id="localisation"
+                            class="form-control" formControlName="localisation">
+                </textarea>
+            </div> -->
+
+            <div class="form-group">
+                <label for="comment">Comment:</label>
+                <input type="texte" id="comment"
+                        class="form-control" formControlName="comment">
+            </div>
+
+            <button class="btn btn-success" [disabled]="savePlaceForm.invalid" type="submit">
+                Enregistrer
+            </button>
+
+        </form>
+
+
+        <div class="container" >
+        <h2>Place Rows</h2>
+        <br>
+        <button (click)="refreshPlaces()"  class="btn ">refresh</button>
+        <br>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>localisation</th>
+                    <th>comment</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let place of lstPlaces; let placeId = index" >
+                    <th *ngIf="place.name" >{{ place._id }}</th>
+                    <th *ngIf="place.name" >{{ place.name }}</th>
+                    <th *ngIf="place.name" >{{ place.localisation.lat }}</th>
+                    <th *ngIf="place.name" >{{ place.comment }}</th>
+                    <button (click)="delatePlace(place._id)" class="btn">delate</button>
+
+                </tr>
+            </tbody>
+
+        </table>
+        </div>
+
+
+    </div>
+</div>
+
